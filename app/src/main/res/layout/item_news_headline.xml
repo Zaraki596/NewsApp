@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_news_item"
+            android:layout_width="0dp"
+            android:layout_height="250dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+        <TextView
+            android:id="@+id/tv_news_source"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="12dp"
+            android:fontFamily="@font/roboto_slab_bold"
+            android:textColor="@color/textColorSubHeading"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_news_item"
+            app:layout_constraintStart_toStartOf="@+id/iv_news_item"
+            tools:text="@tools:sample/cities" />
+
+        <TextView
+            android:id="@+id/tv_date_stamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:textColor="@color/textColorSubHeading"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_news_source"
+            app:layout_constraintStart_toEndOf="@+id/tv_news_source"
+            app:layout_constraintTop_toTopOf="@+id/tv_news_source"
+            tools:text="@tools:sample/date/ddmmyy" />
+
+        <TextView
+            android:id="@+id/tv_news_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="24dp"
+            android:fontFamily="@font/roboto_slab"
+            android:textColor="@color/textColorTitleSource"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_news_source"
+            app:layout_constraintEnd_toEndOf="@+id/iv_news_item"
+            app:layout_constraintStart_toStartOf="@+id/iv_news_item"
+            tools:text="This is very very verylong headline with so many texts in here does it break?
+            I guess no hope it doesn't break for line number 3" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
