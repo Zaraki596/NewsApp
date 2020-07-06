@@ -9,4 +9,8 @@ class NewsDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_news_details)
     }
+
+    companion object {
+        const val ARTICLEKEY = "article_key"
+    }
 }

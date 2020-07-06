@@ -2,10 +2,15 @@ package com.example.newsapp.ui.headlines
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
+import androidx.core.app.ActivityOptionsCompat
 import androidx.lifecycle.Observer
 import com.example.newsapp.R
+import com.example.newsapp.data.model.Article
 import com.example.newsapp.databinding.ActivityHeadlinesBinding
+import com.example.newsapp.ui.NewsDetailsActivity
 import com.example.newsapp.ui.NewsViewModel
 import com.example.newsapp.ui.base.BaseActivity
 import com.example.newsapp.ui.headlines.adapters.HeadlinesListAdapter
@@ -13,13 +18,14 @@ import com.example.newsapp.utils.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class HeadlinesActivity : BaseActivity<NewsViewModel, ActivityHeadlinesBinding>() {
-    private lateinit var mAdapter: HeadlinesListAdapter
+
+    private val mAdapter: HeadlinesListAdapter = HeadlinesListAdapter(this::onItemClicked)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        mAdapter = HeadlinesListAdapter()
+
         binding.newsRecycler.apply {
             adapter = mAdapter
         }
@@ -28,13 +34,17 @@ class HeadlinesActivity : BaseActivity<NewsViewModel, ActivityHeadlinesBinding>(
         handleNetworkChanges()
     }
 
+    override val mViewModel: NewsViewModel by viewModel()
+
     private fun initArticles() {
         mViewModel.articlesLiveData.observe(this, Observer { state ->
             when (state) {
                 is State.Loading -> showLoading(true)
                 is State.Success -> {
-                    mAdapter.submitList(state.data)
-                    showLoading(false)
+                    if (state.data.isNotEmpty()) {
+                        mAdapter.submitList(state.data.toMutableList())
+                        showLoading(false)
+                    }
                 }
                 is State.Error -> {
                     showToast(state.message)
@@ -47,6 +57,15 @@ class HeadlinesActivity : BaseActivity<NewsViewModel, ActivityHeadlinesBinding>(
         binding.swipeRefreshLayout.setOnRefreshListener {
             getArticles()
         }
+
+        // If State isn't `Success` then reload posts.
+        if (mViewModel.articlesLiveData.value !is State.Success) {
+            getArticles()
+        }
+    }
+
+    private fun getArticles() {
+        mViewModel.getArticles()
     }
 
     override fun getViewBinding(): ActivityHeadlinesBinding =
@@ -90,12 +109,17 @@ class HeadlinesActivity : BaseActivity<NewsViewModel, ActivityHeadlinesBinding>(
         })
     }
 
+    private fun onItemClicked(article: Article, imageView: ImageView) {
+        val intent = Intent(this, NewsDetailsActivity::class.java)
+        intent.putExtra(NewsDetailsActivity.ARTICLEKEY, article)
 
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+            this,
+            imageView,
+            imageView.transitionName
+        )
 
-    override val mViewModel: NewsViewModel by viewModel()
-
-    private fun getArticles() {
-        mViewModel.getArticles()
+        startActivity(intent, options.toBundle())
     }
 
     companion object {
