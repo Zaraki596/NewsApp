@@ -2,9 +2,13 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="8dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="8dp">
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="12dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginBottom="12dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -12,12 +16,10 @@
 
         <ImageView
             android:id="@+id/iv_news_item"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="12dp"
+            android:scaleType="fitXY"
+            android:transitionName="photo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -59,6 +61,7 @@
             android:fontFamily="@font/roboto_slab"
             android:textColor="@color/textColorTitleSource"
             android:textSize="20sp"
+            android:transitionName="title"
             app:layout_constraintBottom_toTopOf="@+id/tv_news_source"
             app:layout_constraintEnd_toEndOf="@+id/iv_news_item"
             app:layout_constraintStart_toStartOf="@+id/iv_news_item"

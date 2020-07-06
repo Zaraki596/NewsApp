@@ -1,6 +1,5 @@
 package com.example.newsapp.data.repository
 
-import androidx.annotation.MainThread
 import com.example.newsapp.data.local.dao.ArticleDao
 import com.example.newsapp.data.model.Article
 import com.example.newsapp.data.model.NewsResponse
@@ -15,13 +14,13 @@ class NewsRepository constructor(
     private val articleDao: ArticleDao,
     private val newsApiService: NewsApiService
 ) {
-    fun getAllArticles(): Flow<State<NewsResponse>> {
-        return object : NetworkBoundRepository<NewsResponse, NewsResponse>() {
+    fun getAllArticles(): Flow<State<List<Article>>> {
+        return object : NetworkBoundRepository<List<Article>, NewsResponse>() {
             override suspend fun saveRemoteData(response: NewsResponse) {
-                return articleDao.insertArticles(response)
+                return articleDao.insertArticles(response.articles)
             }
 
-            override fun fetchFromLocal(): Flow<NewsResponse> {
+            override fun fetchFromLocal(): Flow<List<Article>> {
                 return articleDao.getAllArticles()
             }
 
@@ -31,7 +30,4 @@ class NewsRepository constructor(
 
         }.asFlow().flowOn(Dispatchers.IO)
     }
-
-    @MainThread
-    fun getArticleById(articleId: Int): Flow<Article> = articleDao.getArticleById(articleId)
 }

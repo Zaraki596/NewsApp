@@ -2,13 +2,13 @@
     <!-- Base application theme. -->
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-    <!-- Customize your theme here. -->
-    <item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-    <item name="colorAccent">@color/colorAccent</item>
-    <item name="colorSurface">@color/colorSurface</item>
-    <item name="android:colorBackground">@color/background</item>
-    <item name="android:statusBarColor">@color/colorPrimary</item>
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="android:colorBackground">@color/background</item>
+        <item name="android:statusBarColor">@color/colorPrimary</item>
     </style>
 
 
@@ -21,6 +21,17 @@
 
         <item name="android:windowContentTransitions">true</item>
 
+    </style>
+
+    <style name="StatusView">
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="StatusTextView">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textColor">@android:color/white</item>
     </style>
 
 </resources>

@@ -8,4 +8,7 @@
     <color name="colorTransparentGrey">#6B3E3E3E</color>
     <color name="textColorTitleSource">#f2f2f2</color>
     <color name="textColorSubHeading">#bababa</color>
+
+    <color name="colorStatusConnected">#43A047</color>
+    <color name="colorStatusNotConnected">#D32F2F</color>
 </resources>

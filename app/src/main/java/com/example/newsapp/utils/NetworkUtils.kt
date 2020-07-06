@@ -9,10 +9,12 @@ import android.os.Build
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
-/**
- * Network Utility to detect availability or unavailability of Internet connection
- */
-object NetworkUtils {
+
+/*
+Network Utility to detect availability or unavailability of Internet connection
+*/
+
+object NetworkUtils : ConnectivityManager.NetworkCallback() {
 
     private val networkLiveData: MutableLiveData<Boolean> = MutableLiveData()
 
@@ -23,61 +25,37 @@ object NetworkUtils {
         val connectivityManager =
             context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
-
-        val networkCallback = object : ConnectivityManager.NetworkCallback() {
-            override fun onAvailable(network: Network) {
-                networkLiveData.postValue(true)
-            }
-
-            override fun onLost(network: Network) {
-                networkLiveData.postValue(false)
-            }
-        }
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            connectivityManager.registerDefaultNetworkCallback(networkCallback)
+            connectivityManager.registerDefaultNetworkCallback(this)
         } else {
             val builder = NetworkRequest.Builder()
-            connectivityManager.registerNetworkCallback(builder.build(), networkCallback)
+            connectivityManager.registerNetworkCallback(builder.build(), this)
         }
 
+        var isConnected = false
 
-        networkLiveData.postValue(isNetworkConnected(context))
+        // Retrieve current status of connectivity
+        connectivityManager.allNetworks.forEach { network ->
+            val networkCapability = connectivityManager.getNetworkCapabilities(network)
 
-        return networkLiveData
-    }
-
-    /*
-    * Helper class which handles the network Connection Request for APi level below 21 and Above
-    * */
-    private fun isNetworkConnected(context: Context): Boolean {
-        var result = false
-        val connectivityManager =
-            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            val networkCapabilities = connectivityManager.activeNetwork ?: return false
-            val activeNetwork =
-                connectivityManager.getNetworkCapabilities(networkCapabilities) ?: return false
-            result = when {
-                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
-                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
-                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
-                else -> false
-            }
-        } else {
-            connectivityManager.run {
-                connectivityManager.activeNetworkInfo?.run {
-                    result = when (type) {
-                        ConnectivityManager.TYPE_WIFI -> true
-                        ConnectivityManager.TYPE_MOBILE -> true
-                        ConnectivityManager.TYPE_ETHERNET -> true
-                        else -> false
-                    }
-
+            networkCapability?.let {
+                if (it.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)) {
+                    isConnected = true
+                    return@forEach
                 }
             }
         }
 
-        return result
+        networkLiveData.postValue(isConnected)
+
+        return networkLiveData
+    }
+
+    override fun onAvailable(network: Network) {
+        networkLiveData.postValue(true)
+    }
+
+    override fun onLost(network: Network) {
+        networkLiveData.postValue(false)
     }
 }
