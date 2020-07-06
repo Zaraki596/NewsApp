@@ -1,4 +1,4 @@
-package com.example.newsapp.data.api
+package com.example.newsapp.data.remote.api
 
 import com.example.newsapp.data.model.NewsResponse
 import com.example.newsapp.utils.Constants
