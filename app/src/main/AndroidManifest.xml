@@ -18,7 +18,7 @@
             android:theme="@style/AppTheme.Translucent">
 
         </activity>
-        <activity android:name=".ui.HeadlinesActivity">
+        <activity android:name=".ui.headlines.HeadlinesActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

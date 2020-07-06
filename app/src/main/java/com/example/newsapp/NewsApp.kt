@@ -3,6 +3,7 @@ package com.example.newsapp
 import android.app.Application
 import com.example.newsapp.di.databaseModule
 import com.example.newsapp.di.networkModule
+import com.example.newsapp.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -15,7 +16,7 @@ class NewsApp : Application() {
     private fun initKoin() {
         startKoin {
             androidContext(applicationContext)
-            modules(networkModule, databaseModule)
+            modules(networkModule, databaseModule, viewModelModule)
         }
     }
 }
