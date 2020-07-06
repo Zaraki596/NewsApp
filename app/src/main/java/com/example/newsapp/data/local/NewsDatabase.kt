@@ -1,11 +1,10 @@
-package com.example.newsapp.data
+package com.example.newsapp.data.local
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.example.newsapp.data.local.Converters
 import com.example.newsapp.data.local.dao.ArticleDao
 import com.example.newsapp.data.model.Article
 

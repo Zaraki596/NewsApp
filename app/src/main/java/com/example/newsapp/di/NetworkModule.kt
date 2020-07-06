@@ -2,6 +2,7 @@ package com.example.newsapp.di
 
 import com.example.newsapp.BuildConfig
 import com.example.newsapp.data.remote.api.NewsApiService
+import com.example.newsapp.data.repository.NewsRepository
 import com.example.newsapp.utils.Constants
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -41,5 +42,8 @@ val networkModule = module {
 
     single {
         get<Retrofit>().create(NewsApiService::class.java)
+    }
+    single {
+        NewsRepository(get(), get())
     }
 }

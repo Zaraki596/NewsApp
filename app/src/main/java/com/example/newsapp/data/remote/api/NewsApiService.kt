@@ -13,5 +13,5 @@ interface NewsApiService {
         countryCode: String = "us",
         @Query("apikey")
         apiKey: String = Constants.API_KEY
-    ): Response<List<NewsResponse>>
+    ): Response<NewsResponse>
 }
