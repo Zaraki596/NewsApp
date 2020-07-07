@@ -3,6 +3,7 @@ package com.example.newsapp.ui.headlines.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -12,7 +13,7 @@ import com.example.newsapp.R
 import com.example.newsapp.data.model.Article
 import com.example.newsapp.databinding.ItemNewsHeadlineBinding
 
-class HeadlinesListAdapter(private val onItemCLicked: (Article, ImageView) -> Unit) :
+class HeadlinesListAdapter(private val onItemCLicked: (Article, ImageView, TextView) -> Unit) :
     ListAdapter<Article, HeadlinesListAdapter.HeadlinesViewHolder>(HEADLINE_DIFF_CALLBACK) {
 
 
@@ -29,14 +30,14 @@ class HeadlinesListAdapter(private val onItemCLicked: (Article, ImageView) -> Un
 
 
     interface OnItemClickListener {
-        fun onItemClicked(article: Article, imageView: ImageView)
+        fun onItemClicked(article: Article, imageView: ImageView, textView: TextView)
     }
 
     inner class HeadlinesViewHolder(
         private val binding: ItemNewsHeadlineBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(article: Article, clickListener: (Article, ImageView) -> Unit) = with(itemView) {
+        fun bind(article: Article, clickListener: (Article, ImageView, TextView) -> Unit) = with(itemView) {
             binding.ivNewsItem.load(article.urlToImage) {
                 placeholder(CircularProgressDrawable(context).apply {
                     strokeWidth = 10f
@@ -50,7 +51,7 @@ class HeadlinesListAdapter(private val onItemCLicked: (Article, ImageView) -> Un
             binding.tvNewsSource.text = article.source.name
 
             binding.root.setOnClickListener {
-                clickListener(article, binding.ivNewsItem)
+                clickListener(article, binding.ivNewsItem, binding.tvNewsTitle)
             }
 
         }

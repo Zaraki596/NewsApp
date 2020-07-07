@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.NewsDetailsActivity"
+            android:name=".ui.details.NewsDetailsActivity"
             android:theme="@style/AppTheme.Translucent">
 
         </activity>

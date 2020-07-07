@@ -4,15 +4,18 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.app.ActivityOptionsCompat
+import androidx.core.util.Pair
 import androidx.lifecycle.Observer
 import com.example.newsapp.R
 import com.example.newsapp.data.model.Article
 import com.example.newsapp.databinding.ActivityHeadlinesBinding
-import com.example.newsapp.ui.NewsDetailsActivity
 import com.example.newsapp.ui.NewsViewModel
 import com.example.newsapp.ui.base.BaseActivity
+import com.example.newsapp.ui.details.NewsDetailsActivity
 import com.example.newsapp.ui.headlines.adapters.HeadlinesListAdapter
 import com.example.newsapp.utils.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -109,16 +112,15 @@ class HeadlinesActivity : BaseActivity<NewsViewModel, ActivityHeadlinesBinding>(
         })
     }
 
-    private fun onItemClicked(article: Article, imageView: ImageView) {
+    private fun onItemClicked(article: Article, imageView: ImageView, textView: TextView) {
         val intent = Intent(this, NewsDetailsActivity::class.java)
-        intent.putExtra(NewsDetailsActivity.ARTICLEKEY, article)
+        intent.putExtra(NewsDetailsActivity.ARTICLE_KEY, article)
 
         val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
             this,
-            imageView,
-            imageView.transitionName
+            Pair<View, String>(imageView, imageView.transitionName),
+            Pair<View, String>(textView, textView.transitionName)
         )
-
         startActivity(intent, options.toBundle())
     }
 
