@@ -18,7 +18,7 @@
         <ImageView
             android:id="@+id/iv_news_item"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="@dimen/item_image_height"
             android:foreground="@drawable/bottom_grey_gradient"
             android:scaleType="fitXY"
             android:transitionName="photo"
