@@ -24,7 +24,7 @@ class NewsDetailsActivity : BaseActivity<NewsViewModel, ActivityNewsDetailsBindi
     }
 
     private fun initArticles(article: Article) {
-        binding.imageView.load(article.urlToImage) {
+        binding.ivNewsDetail.load(article.urlToImage) {
             placeholder(CircularProgressDrawable(this@NewsDetailsActivity).apply {
                 strokeWidth = 10f
                 centerRadius = 50f

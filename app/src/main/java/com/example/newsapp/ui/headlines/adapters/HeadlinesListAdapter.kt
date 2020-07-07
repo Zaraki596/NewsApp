@@ -37,24 +37,27 @@ class HeadlinesListAdapter(private val onItemCLicked: (Article, ImageView, TextV
         private val binding: ItemNewsHeadlineBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(article: Article, clickListener: (Article, ImageView, TextView) -> Unit) = with(itemView) {
-            binding.ivNewsItem.load(article.urlToImage) {
-                placeholder(CircularProgressDrawable(context).apply {
-                    strokeWidth = 10f
-                    centerRadius = 50f
-                    start()
-                })
-                error(R.drawable.ic_broken_image)
-            }
-            binding.tvNewsTitle.text = article.title
-            binding.tvDateStamp.text = article.publishedAt.subSequence(0, 10)
-            binding.tvNewsSource.text = article.source.name
+        fun bind(article: Article, clickListener: (Article, ImageView, TextView) -> Unit) =
+            with(itemView) {
+                article.urlToImage?.let {
+                    binding.ivNewsItem.load(article.urlToImage) {
+                        placeholder(CircularProgressDrawable(context).apply {
+                            strokeWidth = 10f
+                            centerRadius = 50f
+                            start()
+                        })
+                            .error(R.drawable.ic_broken_image)
+                    }
+                }
+                binding.tvNewsTitle.text = article.title
+                binding.tvDateStamp.text = article.publishedAt.subSequence(0, 10)
+                binding.tvNewsSource.text = article.source.name
 
-            binding.root.setOnClickListener {
-                clickListener(article, binding.ivNewsItem, binding.tvNewsTitle)
-            }
+                binding.root.setOnClickListener {
+                    clickListener(article, binding.ivNewsItem, binding.tvNewsTitle)
+                }
 
-        }
+            }
     }
 
     companion object {

@@ -7,7 +7,7 @@
     tools:context=".ui.details.NewsDetailsActivity">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/iv_news_detail"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
@@ -25,7 +25,7 @@
         android:layout_width="42dp"
         android:layout_height="42dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/circle_transparent_drawable"
         android:shadowColor="@android:color/black"
         android:shadowDx="0"
@@ -37,52 +37,35 @@
 
     <TextView
         android:id="@+id/tv_news_detail_content"
+        style="@style/ContentTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
-        android:fontFamily="@font/roboto_slab"
-        android:shadowColor="@android:color/black"
-        android:shadowDx="0"
-        android:shadowDy="0"
-        android:shadowRadius="30"
-        android:textColor="@color/textColorSubHeading"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_news_detail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        tools:text="@tools:sample/lorem/random" />
+        tools:text="@tools:sample/lorem[0]" />
 
     <TextView
         android:id="@+id/tv_news_detail_source"
+        style="@style/SubTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginBottom="16dp"
-        android:fontFamily="@font/roboto_slab"
-        android:shadowColor="@android:color/black"
-        android:shadowDx="0"
-        android:shadowDy="0"
-        android:shadowRadius="30"
-        android:textColor="@color/textColorTitleSource"
-        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/tv_news_detail_content"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="@tools:sample/cities" />
 
     <TextView
         android:id="@+id/tv_news_detail_timestamp"
+        style="@style/SubTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
-        android:fontFamily="@font/roboto_slab"
-        android:shadowColor="@android:color/black"
-        android:shadowDx="0"
-        android:shadowDy="0"
-        android:shadowRadius="30"
-        android:textColor="@color/textColorTitleSource"
-        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_news_detail_source"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_news_detail_source"
@@ -90,23 +73,14 @@
 
     <TextView
         android:id="@+id/tv_news_detail_title"
+        style="@style/DetailTitleTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="64dp"
-        android:fontFamily="@font/roboto_slab_bold"
-        android:shadowColor="@android:color/black"
-        android:shadowDx="0"
-        android:shadowDy="0"
-        android:shadowRadius="30"
-        android:textColor="@color/textColorTitleSource"
-        android:textSize="29sp"
         android:transitionName="title"
         app:layout_constraintBottom_toTopOf="@+id/tv_news_detail_source"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        tools:text="This is very very verylong headline with so many texts in here does it break?
+        tools:text="This is very very very long headline with so many texts in here does it break?
             I guess no hope it doesn't break for line number 3" />
 </androidx.constraintlayout.widget.ConstraintLayout>

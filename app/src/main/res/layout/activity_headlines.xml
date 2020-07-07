@@ -26,13 +26,11 @@
 
                 <TextView
                     android:id="@+id/toolbarTitle"
+                    style="@style/ToolbarTextView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:fontFamily="@font/roboto_slab_bold"
-                    android:gravity="center"
                     android:text="@string/headlines"
-                    android:textColor="@android:color/white"
-                    android:textSize="29sp" />
+                    android:textColor="@android:color/white" />
 
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
