@@ -10,14 +10,13 @@
         android:id="@+id/iv_news_detail"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:foreground="@drawable/bottom_grey_gradient"
         android:scaleType="centerCrop"
         android:transitionName="photo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <ImageView
@@ -27,10 +26,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/circle_transparent_drawable"
-        android:shadowColor="@android:color/black"
-        android:shadowDx="0"
-        android:shadowDy="0"
-        android:shadowRadius="30"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_arrow_back" />
@@ -45,7 +40,6 @@
         android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="@+id/iv_news_detail"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="@tools:sample/lorem[0]" />
 
@@ -76,10 +70,12 @@
         style="@style/DetailTitleTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="64dp"
         android:transitionName="title"
         app:layout_constraintBottom_toTopOf="@+id/tv_news_detail_source"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="This is very very very long headline with so many texts in here does it break?
             I guess no hope it doesn't break for line number 3" />

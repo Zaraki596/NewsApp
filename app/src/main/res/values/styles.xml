@@ -48,52 +48,29 @@
     </style>
 
     <style name="DetailTitleTextView">
-        <item name="android:layout_marginStart">24dp</item>
-        <item name="android:layout_marginEnd">24dp</item>
-        <item name="android:layout_marginBottom">64dp</item>
         <item name="android:fontFamily">@font/roboto_slab_bold</item>
-        <item name="android:shadowColor">@android:color/black</item>
-        <item name="android:shadowDx">-1</item>
-        <item name="android:shadowDy">1</item>
-        <item name="android:shadowRadius">15</item>
         <item name="android:textColor">@color/textColorTitleSource</item>
         <item name="android:textSize">29sp</item>
     </style>
 
     <style name="SubTitleTextView">
         <item name="android:fontFamily">@font/roboto_slab</item>
-        <item name="android:shadowColor">@android:color/black</item>
-        <item name="android:shadowDx">-1</item>
-        <item name="android:shadowDy">1</item>
-        <item name="android:shadowRadius">10</item>
         <item name="android:textColor">@color/textColorTitleSource</item>
         <item name="android:textSize">20sp</item>
     </style>
 
     <style name="ContentTextView">
         <item name="android:fontFamily">@font/roboto_slab</item>
-        <item name="android:shadowColor">@android:color/black</item>
-        <item name="android:shadowDx">-1</item>
-        <item name="android:shadowDy">1</item>
-        <item name="android:shadowRadius">5</item>
         <item name="android:textColor">@color/textColorSubHeading</item>
     </style>
 
     <style name="SourceMainTextView">
         <item name="android:fontFamily">@font/roboto_slab_bold</item>
-        <item name="android:shadowColor">@android:color/black</item>
-        <item name="android:shadowDx">-1</item>
-        <item name="android:shadowDy">1</item>
-        <item name="android:shadowRadius">2</item>
         <item name="android:textColor">@color/textColorSubHeading</item>
         <item name="android:textSize">12sp</item>
     </style>
 
     <style name="DateMainTextView">
-        <item name="android:shadowColor">@android:color/black</item>
-        <item name="android:shadowDx">-1</item>
-        <item name="android:shadowDy">1</item>
-        <item name="android:shadowRadius">2</item>
         <item name="android:textColor">@color/textColorSubHeading</item>
     </style>
 
