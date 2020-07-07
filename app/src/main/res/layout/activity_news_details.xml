@@ -13,6 +13,7 @@
         android:foreground="@drawable/bottom_grey_gradient"
         android:scaleType="centerCrop"
         android:transitionName="photo"
+        android:foreground="@drawable/bottom_grey_gradient"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
