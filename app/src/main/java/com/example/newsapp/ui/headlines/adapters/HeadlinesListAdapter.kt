@@ -63,7 +63,7 @@ class HeadlinesListAdapter(private val onItemCLicked: (Article, ImageView, TextV
                 oldItem: Article,
                 newItem: Article
             ): Boolean {
-                return oldItem.id == newItem.id
+                return oldItem.title == newItem.title
             }
 
             override fun areContentsTheSame(
