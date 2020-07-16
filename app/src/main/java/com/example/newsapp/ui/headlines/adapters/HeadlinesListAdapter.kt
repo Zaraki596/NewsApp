@@ -29,10 +29,6 @@ class HeadlinesListAdapter(private val onItemCLicked: (Article, ImageView, TextV
         holder.bind(getItem(position), onItemCLicked)
 
 
-    interface OnItemClickListener {
-        fun onItemClicked(article: Article, imageView: ImageView, textView: TextView)
-    }
-
     inner class HeadlinesViewHolder(
         private val binding: ItemNewsHeadlineBinding
     ) : RecyclerView.ViewHolder(binding.root) {
