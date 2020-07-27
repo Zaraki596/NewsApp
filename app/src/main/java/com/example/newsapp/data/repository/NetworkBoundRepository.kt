@@ -33,6 +33,8 @@ abstract class NetworkBoundRepository<RESULT, REQUEST> {
             if (apiResponse.isSuccessful && remoteArticles != null) {
                 // Save articles into the persistence storage
                 saveRemoteData(remoteArticles)
+                // Emit Database content first
+                emit(State.success(fetchFromLocal().first()))
             } else {
                 // Something went wrong! Emit Error state.
                 emit(State.error(apiResponse.message()))
